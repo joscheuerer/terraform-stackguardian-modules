@@ -19,6 +19,11 @@ variable "vnet_name" { default = "" }
 variable "subnet_name" { default = "" }
 variable "vnet_resource_group_name" { default = "" }
 variable "proxy_url" { default = "" }
+variable "client_id"       { default = env("ARM_CLIENT_ID") }
+variable "client_secret"   { default = env("ARM_CLIENT_SECRET") }
+variable "tenant_id"       { default = env("ARM_TENANT_ID") }
+variable "subscription_id" { default = env("ARM_SUBSCRIPTION_ID") }
+
 
 packer {
   required_plugins {
@@ -31,7 +36,11 @@ packer {
 
 source "azure-arm" "this" {
   # Use Azure CLI authentication (must be logged in)
-  use_azure_cli_auth = true
+  use_azure_cli_auth = false
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
+  subscription_id = var.subscription_id
 
   # Location and VM configuration
   location = var.azure_location
