@@ -57,7 +57,7 @@ azure_location = "germanywestcentral"
 #
 # One resource group holds the storage backend, the managed image, and the VM.
 # Leave empty to derive the name from the prefix and subscription ID.
-azure_resource_group_name = "jo-test"
+azure_resource_group_name = "jo-test-runner"
 
 # --- Optional: Resource naming ---
 #
