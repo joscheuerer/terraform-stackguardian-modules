@@ -87,7 +87,7 @@ max_runners = 3
 # Set to false if you cannot create app registrations in Entra ID. No Entra
 # app or StackGuardian OIDC connector is created; the runner group reaches the
 # storage account with its access key instead.
- create_connector = false
+ create_connector = true
 
 # --- Optional: Image build ---
 #
