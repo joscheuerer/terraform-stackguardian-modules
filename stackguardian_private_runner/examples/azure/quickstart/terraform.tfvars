@@ -82,7 +82,7 @@ max_runners = 3
 # (Contributor without User Access Administrator). You must then grant
 # "Storage Blob Data Reader" to the connector service principal and
 # "Storage Blob Data Contributor" to the runner identity yourself.
- create_role_assignments = true
+ create_role_assignments = false
 
 # --- Optional: Image build ---
 #
