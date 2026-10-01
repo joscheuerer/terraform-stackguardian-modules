@@ -6,7 +6,10 @@ locals {
   aws_backend   = var.storage_backend.aws
   azure_backend = var.storage_backend.azure
 
-  create_azure_connector = local.is_azure && try(local.azure_backend.client_id, null) != null
+  # Driven by a plain bool, not by client_id != null: client_id is unknown until
+  # apply when the app registration is created alongside, which would make the
+  # connector's count unknown at plan time.
+  create_azure_connector = local.is_azure && try(local.azure_backend.create_connector, false)
 
   # Name of whichever connector this module created, or null when it created none
   connector_name = (

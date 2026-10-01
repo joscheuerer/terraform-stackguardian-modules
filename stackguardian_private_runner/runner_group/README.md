@@ -64,7 +64,11 @@ module "runner_group" {
 ```
 
 The Azure shape instead sets `type = "azure_blob_storage"` and populates `azure` with
-`storage_account_name`, `access_key`, `tenant_id`, `subscription_id`, and `client_id`.
+`storage_account_name`, `access_key`, `tenant_id`, `subscription_id`, and, for the
+optional AZURE_OIDC connector, `create_connector = true` plus `client_id`. The connector
+is gated on the `create_connector` bool rather than on `client_id`, so its count is
+known at plan time even when `client_id` comes from an app registration created in
+the same apply.
 Variable validation enforces that the sub-object matching `type` is present.
 
 ### Inputs
