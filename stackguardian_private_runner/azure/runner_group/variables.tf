@@ -79,6 +79,18 @@ variable "azure_resource_group_name" {
   default     = ""
 }
 
+variable "create_connector" {
+  description = <<EOT
+    Whether to create the Azure AD app registration, service principal and federated
+    credential, and the StackGuardian AZURE_OIDC connector backed by them.
+    Set to false when the identity running Terraform cannot create app registrations
+    in Entra ID. The runner group then reaches the storage account with its access
+    key alone, and no 'Storage Blob Data Reader' role assignment is created.
+  EOT
+  type        = bool
+  default     = true
+}
+
 variable "create_blob_reader_role_assignment" {
   description = <<EOT
     Whether to create the 'Storage Blob Data Reader' role assignment that grants the OIDC connector service principal read access to the storage account.

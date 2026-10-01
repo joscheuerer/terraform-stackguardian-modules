@@ -73,6 +73,7 @@ variable "storage_backend" {
       and external ID the AWS_RBAC connector assumes
     - azure: required when type = "azure_blob_storage" — storage account name and
       access key plus the identity the AZURE_OIDC connector federates with
+      (client_id = null creates no connector)
   EOT
   type = object({
     type = string
@@ -87,7 +88,9 @@ variable "storage_backend" {
       access_key           = string
       tenant_id            = string
       subscription_id      = string
-      client_id            = string
+      # null skips the AZURE_OIDC connector: an Azure Blob backend authenticates
+      # with the access key alone, so the connector is optional there
+      client_id = optional(string)
     }))
   })
 

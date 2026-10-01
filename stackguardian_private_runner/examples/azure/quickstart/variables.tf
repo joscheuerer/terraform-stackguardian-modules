@@ -64,6 +64,17 @@ variable "azure_storage" {
   default = {}
 }
 
+variable "create_connector" {
+  description = <<EOT
+    Whether to create the Entra ID app registration and the StackGuardian OIDC
+    connector for the storage backend. Set to false when you cannot create app
+    registrations in Entra ID; the runner group then uses the storage account
+    access key alone.
+  EOT
+  type        = bool
+  default     = true
+}
+
 variable "create_role_assignments" {
   description = <<EOT
     Whether to create the two role assignments this deployment needs:

@@ -82,7 +82,12 @@ max_runners = 3
 # (Contributor without User Access Administrator). You must then grant
 # "Storage Blob Data Reader" to the connector service principal and
 # "Storage Blob Data Contributor" to the runner identity yourself.
- create_role_assignments = false
+ create_role_assignments = true
+#
+# Set to false if you cannot create app registrations in Entra ID. No Entra
+# app or StackGuardian OIDC connector is created; the runner group reaches the
+# storage account with its access key instead.
+ create_connector = false
 
 # --- Optional: Image build ---
 #

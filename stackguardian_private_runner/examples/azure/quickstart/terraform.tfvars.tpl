@@ -83,6 +83,11 @@ network = {
 # "Storage Blob Data Reader" to the connector service principal and
 # "Storage Blob Data Contributor" to the runner identity yourself.
 # create_role_assignments = true
+#
+# Set to false if you cannot create app registrations in Entra ID. No Entra
+# app or StackGuardian OIDC connector is created; the runner group reaches the
+# storage account with its access key instead.
+# create_connector = true
 
 # --- Optional: Image build ---
 #

@@ -26,7 +26,7 @@ resource "stackguardian_connector" "aws" {
 
 # Azure Connector — Uses OIDC with a Service Principal provisioned by the caller
 resource "stackguardian_connector" "azure" {
-  count = local.is_azure ? 1 : 0
+  count = local.create_azure_connector ? 1 : 0
 
   resource_name = var.connector_name
   description   = "Azure OIDC connector for Private Runner storage backend"

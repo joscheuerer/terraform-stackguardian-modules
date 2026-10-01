@@ -33,7 +33,7 @@ module "runner_group" {
       access_key           = local.storage_access_key
       tenant_id            = data.azurerm_client_config.current.tenant_id
       subscription_id      = local.subscription_id
-      client_id            = azuread_application.connector.client_id
+      client_id            = var.create_connector ? azuread_application.connector[0].client_id : null
     }
   }
 }

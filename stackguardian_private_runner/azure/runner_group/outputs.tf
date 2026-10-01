@@ -36,8 +36,8 @@ output "connector_id" {
 }
 
 output "azure_connector_service_principal_object_id" {
-  description = "Object ID of the OIDC connector service principal. Use this to create the 'Storage Blob Data Reader' role assignment out of band when create_blob_reader_role_assignment = false."
-  value       = azuread_service_principal.connector.object_id
+  description = "Object ID of the OIDC connector service principal (null when create_connector = false). Use this to create the 'Storage Blob Data Reader' role assignment out of band when create_blob_reader_role_assignment = false."
+  value       = var.create_connector ? azuread_service_principal.connector[0].object_id : null
 }
 
 /*---------------------------------+

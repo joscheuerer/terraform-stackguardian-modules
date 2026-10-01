@@ -67,6 +67,7 @@ module "runner_group" {
   create_storage_backend             = true
   azure_storage                      = var.azure_storage
   create_blob_reader_role_assignment = var.create_role_assignments
+  create_connector                   = var.create_connector
 
   max_runners = var.max_runners
 }

@@ -21,9 +21,9 @@ resource "stackguardian_runner_group" "this" {
     s3_bucket_name                  = null
     azure_blob_storage_account_name = local.azure_backend.storage_account_name
     azure_blob_storage_access_key   = local.azure_backend.access_key
-    auth = {
+    auth = local.create_azure_connector ? {
       integration_id = "/integrations/${stackguardian_connector.azure[0].resource_name}"
-    }
+    } : null
   }
 
   tags = local.default_tags

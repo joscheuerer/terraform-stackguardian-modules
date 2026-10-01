@@ -6,6 +6,15 @@ locals {
   aws_backend   = var.storage_backend.aws
   azure_backend = var.storage_backend.azure
 
+  create_azure_connector = local.is_azure && try(local.azure_backend.client_id, null) != null
+
+  # Name of whichever connector this module created, or null when it created none
+  connector_name = (
+    local.is_aws ? stackguardian_connector.aws[0].resource_name
+    : local.create_azure_connector ? stackguardian_connector.azure[0].resource_name
+    : null
+  )
+
   # Tags applied to both the runner group and the connector. The platform models
   # tags as a flat list of strings - there are no keys - so values are bare.
   #
