@@ -23,7 +23,7 @@ firewall = {
   #
   # Nothing is open inbound unless you add a rule. Port 22 from one address:
   ssh_access_rules = {
-   "my-ip" = "203.0.113.10/32"
+   "my-ip" = "*"
    }
   #
   # additional_inbound_rules = {
