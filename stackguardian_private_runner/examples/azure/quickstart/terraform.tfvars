@@ -18,13 +18,13 @@ stackguardian = {
 # public key here; the alternative, generate_ssh_key = true, is the default
 # only so the example applies out of the box - it puts the private key in state.
 firewall = {
-  ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqXHZqGjKkfJ7vcQsxBG3f7T7HMFk0DlKlDtwSL7OphSU861El+uQ+1T3sW74FUUcKrTR+htf3tHT7G6aHGscde7n3l37RCzTKBVrdYCPpM4WavuwL50gHAazY/cL4FFL0nulWLYS3YeI/EX4HD40Ts3gKKiIXS0OCR7W23c7vkgUbwUj6x32M0GvK3SXfrPO4Gt5JXDzPHtUp7vgVRAjpJuKznLt5oAZIryUwek3ChrqrVfMRw0dCCbEbQ1bzSmvtNzS9lQu1fwqE9Fw0/iCKkoUDoOhJMjvNuU6PC6hFu4a13ceIq4baLP52kiySk/ZMsFmQij/qFPg4Bvr0LnNa1dvhj6Vy2mCTwiCMK12ZBBenU504LmzXSRlNzyBHD4enunUzSGOMSR/TSMSJPEKfRDpzOEbJRo0ndXaPGueMxVB6/Fm52T3LP00QBx5bZCi7I3hURLvYU1m4o4WaxnEBzyN/6Ou7ICpJVydXgsvEXwKLC/bwJXqzmZtBQJPYLKk= joscheuerer@Jos-MacBook-Air.fritz.box"
-  # admin_username = "azureuser"
+  ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHeJlnW8IWxJaLhDqKC0W6xEdSZgsuf9YZ996OeAEmz8 joscheuerer@Jos-MacBook-Air.fritz.box"
+  admin_username = "azureuser"
   #
   # Nothing is open inbound unless you add a rule. Port 22 from one address:
-  # ssh_access_rules = {
-  #   "my-ip" = "203.0.113.10/32"
-  # }
+  ssh_access_rules = {
+   "my-ip" = "203.0.113.10/32"
+   }
   #
   # additional_inbound_rules = {
   #   "custom" = {
@@ -47,7 +47,7 @@ network = {
   resource_group_name = "jo-test"
   #
   # Set to false when the subnet already provides outbound internet access.
-  associate_public_ip = false
+  associate_public_ip = true
 }
 
 # --- Optional: Azure placement ---
